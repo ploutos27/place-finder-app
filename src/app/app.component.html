@@ -1,1 +1,16 @@
-<router-outlet></router-outlet>
+<mat-sidenav-container class="example-container">
+
+    <mat-sidenav #sidenav mode="side" opened class="example-sidenav">
+      TEST
+      <mat-icon aria-hidden="false" aria-label="Toogle" (click)="sidenav.toggle()">navigate_before</mat-icon>
+    </mat-sidenav>
+
+    <mat-sidenav-content>
+      <div class="position-fixed cmPos bg-white">
+        
+      </div>
+      
+      <app-gmap></app-gmap>
+    </mat-sidenav-content>
+
+</mat-sidenav-container>
