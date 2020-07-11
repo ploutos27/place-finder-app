@@ -1,0 +1,21 @@
+<div class="d-flex flex-column" style="margin: -15px;">
+    <div class="p-3 border-bottom d-flex hoverColor"
+         *ngFor="let item of (listing$ | async ); let i = index;"
+         [routerLink]="['details', item.place_id]">
+       <div class="d-flex flex-column data">
+            <span class="title">{{item.name}}</span>
+            <span *ngIf="item.rating" class="rating">{{item.rating}} 
+                <div class="Stars" style="--rating: {{item.rating}};"></div>
+                ({{item.user_ratings_total}}) 
+                <span class="type">{{item.types[0]}}</span>
+            </span>
+            <span class="address">{{item.vicinity}}</span>
+            <span *ngIf="item.opening_hours" 
+                    class="isOpen"
+                    [ngClass]="item.opening_hours.open_now ? 'text-success' : 'text-danger'">{{item.opening_hours.open_now ? 'Opened' : 'Closed'}}</span>
+       </div>
+       <div class="image">
+           img here
+       </div>
+    </div>
+</div>

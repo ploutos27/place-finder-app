@@ -4,9 +4,13 @@
 
 export const environment = {
   production: false,
+  proxy: 'https://cors-anywhere.herokuapp.com/',
+  googleEndPoint: 'https://maps.googleapis.com/maps/api/place/',
   googlePlaceKey: 'AIzaSyAUbWvPy2HiZ6HqBcY5HOaq5rlsAQkhsTA'
 };
+
 /*
+
  * For easier debugging in development mode, you can import the following file
  * to ignore zone related error stack frames such as `zone.run`, `zoneDelegate.invokeTask`.
  *

@@ -1,16 +1,21 @@
 <mat-sidenav-container class="example-container">
-
-    <mat-sidenav #sidenav mode="side" opened class="example-sidenav">
-      TEST
-      <mat-icon aria-hidden="false" aria-label="Toogle" (click)="sidenav.toggle()">navigate_before</mat-icon>
-    </mat-sidenav>
-
-    <mat-sidenav-content>
-      <div class="position-fixed cmPos bg-white">
-        
+  <mat-sidenav #sidenav mode="side" opened class="example-sidenav">
+    <div class="container">
+      <div class="row">
+        <div class="col pt-3">
+          <app-search-input></app-search-input>
+        </div>
+        <div class="d-block w-100 border-top"></div>
+        <div class="col pt-3">
+          <router-outlet></router-outlet>
+        </div>
       </div>
-      
-      <app-gmap></app-gmap>
-    </mat-sidenav-content>
+    </div>
+  </mat-sidenav>
+
+  <mat-sidenav-content>
+    <!-- <mat-icon (click)="sidenav.toggle()">navigate_before</mat-icon> -->
+    <app-gmap></app-gmap> 
+  </mat-sidenav-content>
 
 </mat-sidenav-container>

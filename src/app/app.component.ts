@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-import {FormBuilder, FormGroup} from '@angular/forms';
+import { Component, OnInit } from '@angular/core';
+import { RequestsService } from './services/requests.service';
 
 @Component({
   selector: 'app-root',
@@ -7,9 +7,11 @@ import {FormBuilder, FormGroup} from '@angular/forms';
   styleUrls: ['./app.component.scss']
 })
 
-export class AppComponent {
+export class AppComponent implements OnInit {
+  constructor(private googleRequests: RequestsService) {}
 
-  constructor(fb: FormBuilder) {
-    
+  ngOnInit(): void {  
+    this.googleRequests.googleNearSearch(35.185566,33.382275, 'restaurant');
   }
+
 }

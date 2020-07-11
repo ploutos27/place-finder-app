@@ -1,0 +1,32 @@
+span.title {
+    color: #000;
+    font-size: 16px;
+}
+
+span.address,
+span.isOpen,
+span.type {
+    font-size: 14px;
+    line-height: 1.58;
+    color: rgba(0,0,0,.54);
+    text-transform: capitalize;
+}
+
+  
+  .Stars {
+    --percent: calc(var(--rating) / 5 * 100%);
+    display: inline-block;
+    font-size: var(--star-size);
+    font-family: Times;
+    line-height: 1;
+  }
+  .Stars::before {
+    content: '★★★★★';
+    letter-spacing: 3px;
+    background: linear-gradient(90deg, var(--star-background) var(--percent), var(--star-color) var(--percent));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  .hoverColor:hover {
+    background: #f9f9f9;cursor: pointer;
+  }
