@@ -1,7 +1,8 @@
 <div class="d-flex flex-column" style="margin: -15px;">
     <div class="p-3 border-bottom d-flex hoverColor"
          *ngFor="let item of (listing$ | async ); let i = index;"
-         [routerLink]="['details', item.place_id]">
+         [routerLink]="['details', item.place_id]"
+         (mouseover)="mouseOver(i)">
        <div class="d-flex flex-column data">
             <span class="title">{{item.name}}</span>
             <span *ngIf="item.rating" class="rating">{{item.rating}} 
@@ -14,8 +15,11 @@
                     class="isOpen"
                     [ngClass]="item.opening_hours.open_now ? 'text-success' : 'text-danger'">{{item.opening_hours.open_now ? 'Opened' : 'Closed'}}</span>
        </div>
-       <div class="image">
-           img here
+       <div *ngIf="item.photos" class="image">
+            <img src="{{thumbnail}}photo?maxwidth=200&photoreference={{item.photos[0].photo_reference}}&key={{tokenKey}}" class="img-thumbnail">
        </div>
+    </div>
+    <div *ngIf="paginationToken" class="pagination">
+        <div class="loadMore" (click)="pagination()">Load More</div>
     </div>
 </div>

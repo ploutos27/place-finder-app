@@ -1,1 +1,74 @@
-<p>place-details works!</p>
+<div *ngIf="res" class="d-flex flex-column" style="margin: -15px;">
+    <img [src]="placeholderImage | safeURL" class="imgFixed">
+    <div class="p-3">
+        <div class="name">
+            {{res.result.name}}
+        </div>
+        <div *ngIf="res.result.rating" class="ratings">
+            {{res.result.rating}} 
+            <div class="Stars" style="--rating: {{res.result.rating}};"></div>
+            ({{res.result.user_ratings_total}}) 
+        </div>
+        <div *ngIf="res.result.types" class="type">
+            {{res.result.types[0]}} 
+        </div>
+    </div>
+    <div class="d-block w-100 border-top"></div>
+    <div class="p-3">
+        <div class="details d-flex flex-column">
+            <div *ngIf="res.result.formatted_address" class="location">
+                <mat-icon>location_on</mat-icon>
+                {{res.result.formatted_address}}
+            </div>
+            <div *ngIf="res.result.opening_hours" class="location">
+                <mat-icon>query_builder</mat-icon>
+                <span [ngClass]="res.result.opening_hours['open_now'] ? 'text-success' : 'text-danger'">{{res.result.opening_hours['open_now'] ? 'Opened' : 'Closed'}}</span>
+                <ul class="status">
+                    <li class="item" *ngFor="let item of res.result.opening_hours['weekday_text']">
+                        {{item}}
+                    </li>
+                </ul>
+            </div>
+            <div *ngIf="res.result.website" class="location">
+                <mat-icon>public</mat-icon>
+                <a [href]="res.result.website" target="_blank"> {{res.result.website}}</a>
+               
+            </div>
+            <div *ngIf="res.result.international_phone_number" class="location">
+                <mat-icon>local_phone</mat-icon>
+                {{res.result.international_phone_number}}
+            </div>
+            <div *ngIf="res.result.plus_code" class="location">
+                <mat-icon>gps_fixed</mat-icon>
+                {{res.result.plus_code['compound_code']}}
+            </div>
+        </div>
+    </div>
+    <div class="d-block w-100 border-top"></div>
+    <div *ngIf="res.result.photos" class="p-3">
+        <p class="textLabel">Photos</p>
+        <ngb-carousel>
+            <ng-template ngbSlide *ngFor="let item of res.result.photos">
+                <div class="picsum-img-wrapper">
+                    <img [src]="url + item.photo_reference + key">
+                </div>
+            </ng-template>
+        </ngb-carousel>
+
+    </div>
+    <div class="d-block w-100 border-top"></div>
+    <div *ngIf="res.result.reviews" class="p-3">
+        <p class="textLabel">Reviews</p>
+        <div class="person" *ngFor="let item of res.result.reviews">
+            <img src="{{item.profile_photo_url}}">
+            <span class="name">{{item.author_name}}</span>
+            <div class="ratings">
+                <div class="Stars" style="--rating: {{item.rating}};"></div>
+                <span class="time">{{item.relative_time_description}}</span>
+            </div>
+            <div class="txt">
+                {{item.text}}
+            </div>
+        </div>
+    </div>
+</div>

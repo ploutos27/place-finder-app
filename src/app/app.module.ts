@@ -12,12 +12,17 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatIconModule} from '@angular/material/icon';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+
 
 // Components
 import { GmapComponent } from './components/gmap/gmap.component';
 import { PlaceListingComponent } from './components/place-listing/place-listing.component';
 import { PlaceDetailsComponent } from './components/place-details/place-details.component';
 import { SearchInputComponent } from './components/search-input/search-input.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { SafeURLPipe } from './pipes/safe-url.pipe';
+import { LoaderComponent } from './components/loader/loader.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +30,9 @@ import { SearchInputComponent } from './components/search-input/search-input.com
     GmapComponent,
     PlaceListingComponent,
     PlaceDetailsComponent,
-    SearchInputComponent
+    SearchInputComponent,
+    SafeURLPipe,
+    LoaderComponent
   ],
   imports: [
     BrowserModule,
@@ -33,7 +40,7 @@ import { SearchInputComponent } from './components/search-input/search-input.com
     BrowserAnimationsModule,
     FormsModule, ReactiveFormsModule,MatSidenavModule,
     MatButtonModule,MatIconModule, MatFormFieldModule, MatInputModule,
-    HttpClientModule
+    HttpClientModule,NgbModule, MatProgressSpinnerModule
   ],
   providers: [],
   bootstrap: [AppComponent]

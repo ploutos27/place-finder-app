@@ -1,4 +1,4 @@
-<mat-form-field appearance="outline">
+<mat-form-field appearance="outline" *ngIf="!isDetails">
     <mat-label>Search by category or location</mat-label>
     <input 
         [(ngModel)]="autocompleteInput" 

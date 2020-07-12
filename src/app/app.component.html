@@ -2,8 +2,9 @@
   <mat-sidenav #sidenav mode="side" opened class="example-sidenav">
     <div class="container">
       <div class="row">
-        <div class="col pt-3">
-          <app-search-input></app-search-input>
+        <div class="col pt-3"
+        [ngClass]="{'mb-37':isDetails}">
+          <app-search-input [isDetails]="isDetails"></app-search-input>
         </div>
         <div class="d-block w-100 border-top"></div>
         <div class="col pt-3">

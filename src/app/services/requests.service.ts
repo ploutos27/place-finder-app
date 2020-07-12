@@ -21,17 +21,31 @@ export class RequestsService {
     return this.nearListingSubject.asObservable();
   }
 
-  // get near place (random type since)
+  // get near place
   googleNearSearch(lat: number, lng: number, type: string) {
-    this.http.get(environment.proxy + environment.googleEndPoint + 'nearbysearch/json?location=' + lat + ',' + lng + '&radius=1000&type=' + type + '&key=' + environment.googlePlaceKey).subscribe(res => {
-      this.nearListingSubject.next(res);
+    this.http.get(environment.proxy + environment.googleEndPoint + 'nearbysearch/json?location=' + lat + ',' + lng + '&radius=5000&type=' + type + '&key=' + environment.googlePlaceKey).subscribe(res => {
+      let data = res;
+      data['type'] = type;
+      this.nearListingSubject.next(data);
       }, error => {
-        console.log('Error: ' + error)
+        console.log('Error: ' + error);
       });
   }
 
-  googleImagePlaceHolder(img_ref: string) {
-    return this.http.get(environment.proxy + environment.googleEndPoint + 'photo?maxheight=200&photoreference=' + img_ref + '&key=' + environment.googlePlaceKey);
+  googlePaginatedCurrentData(lat: number, lng: number, type: string, tokenPaginated: string) {
+    this.http.get(environment.proxy + environment.googleEndPoint + 'nearbysearch/json?location=' + lat + ',' + lng + '&radius=5000&type=' + type + '&key=' + environment.googlePlaceKey + '&pagetoken=' + tokenPaginated).subscribe(res => {
+      this.nearListingSubject.next(res);
+      }, error => {
+        console.log('Error: ' + error);
+      });
+  }
+
+  googleFindPlaces(input: string, lat: number, lng: number) {
+    this.http.get(environment.proxy + environment.googleEndPoint + 'textsearch/json?query=' + input + '&location=' + lat + ',' + lng + '&key=' + environment.googlePlaceKey).subscribe(res => {
+      this.nearListingSubject.next(res);
+    }, error => {
+      console.log('Error: ' + error);
+    })
   }
 
   googleGetPlaceDetails(id: string) {

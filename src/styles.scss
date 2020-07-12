@@ -3,8 +3,41 @@
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+// helpers 
+.mb-37 {
+  margin-bottom: 37%;
+}
+
+// Ratings
 :root {
     --star-size: 16px;
     --star-color: #ccc;
     --star-background: #e7711b;
   }
+  .Stars {
+    --percent: calc(var(--rating) / 5 * 100%);
+    display: inline-block;
+    font-size: var(--star-size);
+    font-family: Times;
+    line-height: 1;
+  }
+  .Stars::before {
+    content: '★★★★★';
+    letter-spacing: 3px;
+    background: linear-gradient(90deg, var(--star-background) var(--percent), var(--star-color) var(--percent));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .mat-form-field-appearance-outline .mat-form-field-outline {
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2), 0 -1px 0px rgba(0,0,0,0.02);
+    background: #fff;
+}
+
+.mat-drawer-inner-container {
+  overflow-x: hidden !important;
+}
+/* Importing Bootstrap SCSS file. */
+@import '~bootstrap/scss/bootstrap';
