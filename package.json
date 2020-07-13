@@ -28,6 +28,7 @@
     "@types/googlemaps": "^3.39.8",
     "bootstrap": "^4.5.0",
     "classlist.js": "^1.1.20150312",
+    "ng-gapi": "0.0.93",
     "rxjs": "~6.5.4",
     "tslib": "^1.10.0",
     "web-animations-js": "^2.3.2",

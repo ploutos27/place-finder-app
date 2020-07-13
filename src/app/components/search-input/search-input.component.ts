@@ -1,4 +1,4 @@
-import { Component, ViewChild, EventEmitter, Output, OnInit, AfterViewInit, Input } from '@angular/core';
+import { Component, ViewChild, EventEmitter, Output, OnInit, Input } from '@angular/core';
 import { SharedService } from '../../services/shared.service';
 import { RequestsService } from 'src/app/services/requests.service';
 
@@ -35,7 +35,6 @@ export class SearchInputComponent implements OnInit {
   }
 
   private getPlaceAutocomplete() {
-
     const autocomplete = new google.maps.places.Autocomplete(this.addresstext.nativeElement);   
     autocomplete.setFields(['address_components', 'geometry', 'icon', 'name']);
     google.maps.event.addListener(autocomplete, 'place_changed', () => {

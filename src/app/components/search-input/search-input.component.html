@@ -1,18 +1,9 @@
 <mat-form-field appearance="outline">
     <mat-label>Search by category or location</mat-label>
-    
     <input 
         [(ngModel)]="autocompleteInput" 
         #addresstext
-        matInput placeholder="e.g. Restaurants or Nicosia">
+        matInput placeholder="e.g. hotels larnaca or restaurants nicosia">
     <mat-icon matSuffix>search</mat-icon>
     <div *ngIf="isDetails" class="backToResutls" [routerLink]="['/']">Back to results</div>
 </mat-form-field>
-
-
-<!-- 
-
-    mat-form-field.mat-focused .mat-form-field-label {
-
-}
--->
