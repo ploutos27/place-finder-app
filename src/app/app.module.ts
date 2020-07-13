@@ -21,11 +21,7 @@ import { PlaceListingComponent } from './components/place-listing/place-listing.
 import { PlaceDetailsComponent } from './components/place-details/place-details.component';
 import { SearchInputComponent } from './components/search-input/search-input.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { SafeURLPipe } from './pipes/safe-url.pipe';
 import { LoaderComponent } from './components/loader/loader.component';
-
-// Directives
-import { PaginationDirective } from './directives/pagination.directive';
 
 @NgModule({
   declarations: [
@@ -34,9 +30,7 @@ import { PaginationDirective } from './directives/pagination.directive';
     PlaceListingComponent,
     PlaceDetailsComponent,
     SearchInputComponent,
-    SafeURLPipe,
-    LoaderComponent,
-    PaginationDirective
+    LoaderComponent
   ],
   imports: [
     BrowserModule,
