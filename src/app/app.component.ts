@@ -48,7 +48,7 @@ export class AppComponent implements OnInit {
         const latitude = position.coords.latitude;
         this.returnLocations({longitude,latitude})
       },error=> {
-        alert('Please allow location');
+        this.googleRequests.googleNearSearch(35.095192,33.203430, 'all'); // if user not use location get cyprus locations and all categories
       });
     }
   }
