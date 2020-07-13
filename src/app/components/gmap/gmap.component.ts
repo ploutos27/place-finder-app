@@ -32,20 +32,27 @@ export class GmapComponent implements OnInit {
   ngOnInit(): void {
     this.indexForMarker = this.formBuilder.group({ index: [''] });
     this.googleRequests.nearListing.subscribe(res=> {
-        if (res.status) {
-          this.mapInitializer(res);
-        }
-      });
+      if (res.status) {
+        this.mapInitializer(res);
+      }
+    });
   }
 
   mapInitializer(data) {
+    this.markers = []; // clean markers
     for (let i = 0; i < data.results.length; i++) {
       if ( data.results[i].geometry.location ) {
         this.markers.push(new google.maps.Marker({
           position:  new google.maps.LatLng(data.results[i].geometry.location.lat ,data.results[i].geometry.location.lng),
           map: this.map,
+         // icon: data.results[i].icon,
           title: `<h3 class="mb-0">${data.results[i].name}</h3>
-                    <div class="location">${data.results[i].vicinity}</div>`,
+                    <div class="location">${data.results[i].vicinity}</div>
+                <span style="${data.results[i]['rating'] ? 'display: block' : 'display: none'}" class="rating">
+                  ${data.results[i]['rating']} 
+                  <div class="Stars" style="--rating: ${data.results[i].rating}"></div>
+                  (${data.results[i]['user_ratings_total']})
+                </span>`,
         }));
       }
     }
@@ -63,17 +70,12 @@ export class GmapComponent implements OnInit {
     }
 
     this.map = new google.maps.Map(this.gmap.nativeElement, mapOptions);
-    let service = new google.maps.places.PlacesService(this.map);
-
     this.shareData.loadMap(this.map); // pass map to the share services
     this.markers.forEach(el => {
-      var infowindow = new google.maps.InfoWindow({
-        content: el.title
-      });
+      var infowindow = new google.maps.InfoWindow({ content: el.title });
       el.setMap(this.map);
       el.addListener('mouseover', () => infowindow.open(this.map, el)); // mouse over
       el.addListener('mouseout', ()=> infowindow.close()); // mouse out 
-     
     });
 
     this.shareData.indexResponses.subscribe(res => {

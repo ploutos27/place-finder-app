@@ -40,5 +40,8 @@ export class PlaceDetailsComponent implements OnInit {
     });
   }
 
+  getDirections() {
+ 
+  }
 
 }

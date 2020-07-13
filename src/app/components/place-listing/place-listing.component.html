@@ -19,7 +19,10 @@
             <img src="{{thumbnail}}photo?maxwidth=200&photoreference={{item.photos[0].photo_reference}}&key={{tokenKey}}" class="img-thumbnail">
        </div>
     </div>
-    <div *ngIf="paginationToken" class="pagination">
-        <div class="loadMore" (click)="pagination()">Load More</div>
+    <div class="pagination" #loadBtnTrigger>
+        <div class="loadMore">Load More</div>
     </div>
 </div>
+
+
+<!-- *ngIf="paginationToken"  -->

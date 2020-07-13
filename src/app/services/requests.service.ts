@@ -21,9 +21,9 @@ export class RequestsService {
     return this.nearListingSubject.asObservable();
   }
 
-  // get near place
+  // get near place environment.proxy
   googleNearSearch(lat: number, lng: number, type: string) {
-    this.http.get(environment.proxy + environment.googleEndPoint + 'nearbysearch/json?location=' + lat + ',' + lng + '&radius=5000&type=' + type + '&key=' + environment.googlePlaceKey).subscribe(res => {
+    this.http.get(environment.googleEndPoint + 'nearbysearch/json?location=' + lat + ',' + lng + '&radius=5000&type=' + type + '&key=' + environment.googlePlaceKey).subscribe(res => {
       let data = res;
       data['type'] = type;
       this.nearListingSubject.next(data);
@@ -32,16 +32,22 @@ export class RequestsService {
       });
   }
 
-  googlePaginatedCurrentData(lat: number, lng: number, type: string, tokenPaginated: string) {
-    this.http.get(environment.proxy + environment.googleEndPoint + 'nearbysearch/json?location=' + lat + ',' + lng + '&radius=5000&type=' + type + '&key=' + environment.googlePlaceKey + '&pagetoken=' + tokenPaginated).subscribe(res => {
-      this.nearListingSubject.next(res);
+  // paginated 
+  googlePaginatedCurrentData(lat: number, lng: number, input: string, tokenPaginated: string) {
+    this.http.get(environment.googleEndPoint + 'textsearch/json?query=' + input + '&location=' + lat + ',' + lng + '&key=' + environment.googlePlaceKey + '&pagetoken=' + tokenPaginated).subscribe(res => {
+      let data = res;
+      data['type'] = input;
+      this.nearListingSubject.next(data);
       }, error => {
         console.log('Error: ' + error);
       });
   }
 
+  // text search
   googleFindPlaces(input: string, lat: number, lng: number) {
-    this.http.get(environment.proxy + environment.googleEndPoint + 'textsearch/json?query=' + input + '&location=' + lat + ',' + lng + '&key=' + environment.googlePlaceKey).subscribe(res => {
+    this.http.get(environment.googleEndPoint + 'textsearch/json?query=' + input + '&location=' + lat + ',' + lng + '&key=' + environment.googlePlaceKey).subscribe(res => {
+      let data = res;
+      data['type'] = input;
       this.nearListingSubject.next(res);
     }, error => {
       console.log('Error: ' + error);
@@ -49,6 +55,6 @@ export class RequestsService {
   }
 
   googleGetPlaceDetails(id: string) {
-    return this.http.get(environment.proxy + environment.googleEndPoint + 'details/json?place_id='+ id +'&key=' + environment.googlePlaceKey);
+    return this.http.get(environment.googleEndPoint + 'details/json?place_id='+ id +'&key=' + environment.googlePlaceKey);
   }
 }

@@ -12,6 +12,27 @@
     text-transform: capitalize;
 }
 
+.directions {
+    display: block;
+    position: absolute;
+    top: 11px;
+    right: 15px;
+    background: #1A73E8;
+    border-radius: 50%;
+    width: 36px;
+    height: 36px;
+    cursor: pointer;
+
+    mat-icon {
+        color: #fff;
+        font-size: 1.3rem;
+        left: 8px;
+        top: 8px;
+        position: relative;
+    }
+}
+
+
 img.imgFixed {
     position: absolute;
     top: -9%;

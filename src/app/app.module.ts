@@ -24,6 +24,9 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { SafeURLPipe } from './pipes/safe-url.pipe';
 import { LoaderComponent } from './components/loader/loader.component';
 
+// Directives
+import { PaginationDirective } from './directives/pagination.directive';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -32,7 +35,8 @@ import { LoaderComponent } from './components/loader/loader.component';
     PlaceDetailsComponent,
     SearchInputComponent,
     SafeURLPipe,
-    LoaderComponent
+    LoaderComponent,
+    PaginationDirective
   ],
   imports: [
     BrowserModule,

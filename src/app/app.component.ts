@@ -12,29 +12,9 @@ import { SharedService } from './services/shared.service';
 export class AppComponent implements OnInit {
   isDetails: boolean;
   id: string;
-  loading = true;
-
-  // some random location 
-  locations: Array<any> = [
-    { lat: '34.707130', long: '33.022617'}, // lim
-    { lat: '35.185566', long: '33.382275'}, // nic
-    { lat: '34.917709', long: '33.636631'}, // lar
-    { lat: '34.772015', long: '32.429737'}  // paf
-  ];
-  // some random categories
-  catogories: Array<any> = [
-    'Restaurant',
-    'School', 
-    'Cafe', 
-    'Shopping Mall', 
-    'Bar', 
-    'Bank',
-    'Supermarket', 
-    'Gym',
-    'Gas Station'
-  ];
 
   constructor(private googleRequests: RequestsService, private router: Router,  private shareData: SharedService) {
+    // watch router changes
     this.router.events.forEach((event) => {
       if(event instanceof NavigationEnd) {
         if (RegExp('details').test(event.url) ) {
@@ -44,7 +24,7 @@ export class AppComponent implements OnInit {
           this.isDetails = false;
             this.shareData.Map.subscribe(res => {
               if (Object.keys(res).length !== 0) {
-                res.setZoom(12);
+                res.setZoom(12); // set zoom back to normal
               }
             });
         }
@@ -54,7 +34,6 @@ export class AppComponent implements OnInit {
 
   ngOnInit() { 
    this.getUserLocation(); 
-   this.loading = false;
   }
 
   returnLocations(locations: object) {
@@ -68,8 +47,7 @@ export class AppComponent implements OnInit {
         const latitude = position.coords.latitude;
         this.returnLocations({longitude,latitude})
       },error=> {
-        let loc = this.locations[Math.floor(Math.random() * this.locations.length)];
-        this.googleRequests.googleNearSearch(35.126411, 33.429859, this.catogories[Math.floor(Math.random() * this.catogories.length)]);
+        alert('Please allow location');
       });
     }
   }

@@ -12,6 +12,9 @@
         <div *ngIf="res.result.types" class="type">
             {{res.result.types[0]}} 
         </div>
+        <div class="directions" (click)="getDirections()">
+            <mat-icon>directions</mat-icon>
+        </div>
     </div>
     <div class="d-block w-100 border-top"></div>
     <div class="p-3">
