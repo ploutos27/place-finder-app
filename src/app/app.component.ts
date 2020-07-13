@@ -12,7 +12,8 @@ import { SharedService } from './services/shared.service';
 export class AppComponent implements OnInit {
   isDetails: boolean;
   id: string;
-
+  title = 'place-finder-app';
+  
   constructor(private googleRequests: RequestsService, private router: Router,  private shareData: SharedService) {
     // watch router changes
     this.router.events.forEach((event) => {

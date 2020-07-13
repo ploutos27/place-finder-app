@@ -1,4 +1,6 @@
 export const environment = {
   production: true,
-  googlePlaceKey: 'AIzaSyAUbWvPy2HiZ6HqBcY5HOaq5rlsAQkhsTA'
+  proxy: 'https://cors-anywhere.herokuapp.com/',
+  googleEndPoint: 'https://maps.googleapis.com/maps/api/place/',
+  googlePlaceKey: ''
 };
