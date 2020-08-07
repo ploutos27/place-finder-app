@@ -22,12 +22,12 @@ export class SearchInputComponent implements OnInit {
   constructor(private shareData: SharedService, private googleRequests: RequestsService) { }
 
   ngOnInit(): void {
-    this.shareData.Map.subscribe(res => {
-      if (Object.keys(res).length !== 0) {
-        this.lat = res.center.lat();
-        this.long = res.center.lng();
-      }
-    })
+    // this.shareData.Map.subscribe(res => {
+    //   if (Object.keys(res).length !== 0) {
+    //     this.lat = res.center.lat();
+    //     this.long = res.center.lng();
+    //   }
+    // })
   }
 
   ngAfterViewInit() {

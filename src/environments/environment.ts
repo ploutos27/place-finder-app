@@ -6,7 +6,7 @@ export const environment = {
   production: false,
   proxy: 'https://cors-anywhere.herokuapp.com/',
   googleEndPoint: 'https://maps.googleapis.com/maps/api/place/',
-  googlePlaceKey: ''
+  googlePlaceKey: 'AIzaSyAUbWvPy2HiZ6HqBcY5HOaq5rlsAQkhsTA'
 };
 
 /*

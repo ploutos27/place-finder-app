@@ -13,7 +13,9 @@ export class AppComponent implements OnInit {
   isDetails: boolean;
   id: string;
   title = 'place-finder-app';
-  
+  lat: number = 35.1264;
+  lng: number = 33.4299;
+
   constructor(private googleRequests: RequestsService, private router: Router,  private shareData: SharedService) {
     // watch router changes
     this.router.events.forEach((event) => {
@@ -34,7 +36,8 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit() { 
-   this.getUserLocation(); 
+    
+   //this.getUserLocation(); 
   }
 
   returnLocations(locations: object) {
@@ -48,7 +51,7 @@ export class AppComponent implements OnInit {
         const latitude = position.coords.latitude;
         this.returnLocations({longitude,latitude})
       },error=> {
-        this.googleRequests.googleNearSearch(35.095192,33.203430, 'all'); // if user not use location get cyprus locations and all categories
+       // this.googleRequests.googleNearSearch(35.095192,33.203430, 'all'); // if user not use location get cyprus locations and all categories
       });
     }
   }

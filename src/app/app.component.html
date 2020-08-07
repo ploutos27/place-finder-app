@@ -2,8 +2,7 @@
   <mat-sidenav #sidenav mode="side" opened class="example-sidenav">
     <div class="container">
       <div class="row">
-        <div class="col pt-3"
-        [ngClass]="{'mb-37':isDetails}">
+        <div class="col pt-3" [ngClass]="{'mb-37':isDetails}">
           <app-search-input [isDetails]="isDetails"></app-search-input>
         </div>
         <div class="d-block w-100 border-top"></div>
@@ -16,7 +15,7 @@
 
   <mat-sidenav-content>
     <mat-icon (click)="sidenav.toggle()" class="toggle">navigate_before</mat-icon>
-    <app-gmap></app-gmap> 
+    <agm-map [latitude]="lat" [longitude]="lng"></agm-map>
   </mat-sidenav-content>
 
 </mat-sidenav-container>

@@ -26,13 +26,13 @@ export class PlaceListingComponent implements OnInit {
     private elementRef:ElementRef) { }
   
   ngOnInit(): void {
-    this.googleRequests.nearListing.subscribe(res => {
-      if (res.status) {
-        this.listing$ = of (res.results);
-        this.paginationToken = res.next_page_token;
-        this.type = res.type;
-      }
-    });
+    // this.googleRequests.nearListing.subscribe(res => {
+    //   if (res.status) {
+    //     this.listing$ = of (res.results);
+    //     this.paginationToken = res.next_page_token;
+    //     this.type = res.type;
+    //   }
+    // });
   }
 
   pagination() {

@@ -21,6 +21,7 @@ import { PlaceDetailsComponent } from './components/place-details/place-details.
 import { SearchInputComponent } from './components/search-input/search-input.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { LoaderComponent } from './components/loader/loader.component';
+import { AgmCoreModule } from '@agm/core';
 
 
 @NgModule({
@@ -38,7 +39,10 @@ import { LoaderComponent } from './components/loader/loader.component';
     BrowserAnimationsModule,
     FormsModule, ReactiveFormsModule,MatSidenavModule,
     MatButtonModule,MatIconModule, MatFormFieldModule, MatInputModule,
-    HttpClientModule,NgbModule, MatProgressSpinnerModule
+    HttpClientModule,NgbModule, MatProgressSpinnerModule,
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyAUbWvPy2HiZ6HqBcY5HOaq5rlsAQkhsTA'
+    })
   ],
   providers: [],
   bootstrap: [AppComponent]

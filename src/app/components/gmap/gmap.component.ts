@@ -58,7 +58,7 @@ export class GmapComponent implements OnInit {
     }
     
     // default coordinates for map
-    const coordinates = new google.maps.LatLng(data.results[0].geometry.location.lat ,data.results[0].geometry.location.lng)
+    const coordinates = new google.maps.LatLng(data.results[0].geometry.location.lat ,data.results[0].geometry.location.lng); //
     const mapOptions: google.maps.MapOptions = { 
       center: coordinates,
       zoom: 12,
@@ -71,6 +71,7 @@ export class GmapComponent implements OnInit {
 
     this.map = new google.maps.Map(this.gmap.nativeElement, mapOptions);
     this.shareData.loadMap(this.map); // pass map to the share services
+    
     this.markers.forEach(el => {
       var infowindow = new google.maps.InfoWindow({ content: el.title });
       el.setMap(this.map);

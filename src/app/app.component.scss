@@ -1,3 +1,7 @@
+@import '../styles.scss';
+
+
+
 .example-container {
     position: absolute;
     top: 0;
@@ -10,7 +14,10 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      width: 400px;
+      width: 250px;
+        @include media-breakpoint-up(md) { 
+          width: 400px;
+        }
     }
 
     .mat-icon.toggle {
@@ -29,5 +36,7 @@
   
 }
   
-
+agm-map {
+  height: 100%;
+}
 
